@@ -6,4 +6,4 @@ COPY . .
 RUN npx prisma generate
 RUN npm run build
 EXPOSE 3000
-CMD npx prisma db push && node node_modules/next/dist/bin/next start
+CMD npx prisma db push && node node_modules/next/dist/bin/next start -p ${PORT:-3000}
