@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Region {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String
+  features    String
+  image       String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  schools     School[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model School {
+  id             String   @id @default(cuid())
+  name           String
+  slug           String   @unique
+  regionId       String
+  region         Region   @relation(fields: [regionId], references: [id])
+  description    String
+  features       String
+  programs       String
+  images         String
+  mainImage      String?
+  facilityImages String   @default("[]")
+  facilityVideo  String?
+  dormImages     String   @default("[]")
+  dormVideo      String?
+  contact        String?
+  address        String?
+  website        String?
+  tags           String
+  order          Int      @default(0)
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model ConsultationRequest {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  region    String?
+  school    String?
+  message   String
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+}
+
+model HeroSlide {
+  id         String   @id @default(cuid())
+  type       String   @default("image")
+  imageUrl   String?
+  youtubeUrl String?
+  title      String?
+  subtitle   String?
+  order      Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model SiteSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
