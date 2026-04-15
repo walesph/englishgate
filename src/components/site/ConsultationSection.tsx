@@ -45,12 +45,19 @@ export default function ConsultationSection({ regions }: Props) {
   };
 
   return (
-    <section id="consultation" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="consultation" className="py-24 bg-gradient-to-br from-blue-950 via-blue-800 to-blue-700 relative overflow-hidden">
+      {/* 배경 장식 */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-600 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* 왼쪽: 소개 */}
           <div className="text-white">
-            <p className="text-blue-300 font-semibold text-sm uppercase tracking-widest mb-3">Free Consultation</p>
+            <span className="inline-block bg-white/10 border border-white/20 text-blue-200 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+              Free Consultation
+            </span>
+            <br />
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               무료 상담 신청
             </h2>
@@ -77,7 +84,7 @@ export default function ConsultationSection({ regions }: Props) {
           </div>
 
           {/* 오른쪽: 폼 */}
-          <div className="bg-white rounded-3xl p-8 shadow-2xl">
+          <div className="bg-white rounded-3xl p-8 shadow-2xl border border-white/10">
             {status === "success" ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">

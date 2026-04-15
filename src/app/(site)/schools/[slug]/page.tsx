@@ -48,7 +48,7 @@ function GallerySection({ title, images, videoUrl }: { title: string; images: st
 export default async function SchoolPage({ params }: Props) {
   const { slug } = await params;
 
-  const school = await prisma.school.findUnique({
+  const school = await prisma.school.findFirst({
     where: { slug, isActive: true },
     include: { region: true },
   });

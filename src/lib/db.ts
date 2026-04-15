@@ -2,7 +2,7 @@ import { PrismaClient } from "@/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 declare global {
-  var prisma: PrismaClient | undefined; // required for hot-reload in dev
+  var prisma: PrismaClient | undefined;
 }
 
 function createPrismaClient() {

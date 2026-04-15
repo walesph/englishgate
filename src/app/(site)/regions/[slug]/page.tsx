@@ -11,7 +11,7 @@ interface Props {
 export default async function RegionPage({ params }: Props) {
   const { slug } = await params;
 
-  const region = await prisma.region.findUnique({
+  const region = await prisma.region.findFirst({
     where: { slug, isActive: true },
     include: {
       schools: {
